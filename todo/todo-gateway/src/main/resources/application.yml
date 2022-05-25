@@ -1,0 +1,9 @@
+server:
+  port: 8080
+  shutdown: graceful
+
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://admin:admin@localhost:27017}
+      database: todo
