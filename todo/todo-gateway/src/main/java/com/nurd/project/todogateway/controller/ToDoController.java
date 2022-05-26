@@ -43,7 +43,9 @@ public class ToDoController {
 
     @GetMapping("/opens")
     public ResponseEntity<List<ToDoDTO>> getOpenToDos() {
-        var list = mapper.mapToToDoEntiyList(toDoService.getOpenToDos());
+        var list = mapper.mapToToDoDTOList(toDoService.getOpenToDos());
+        if(list.isEmpty())
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         return new ResponseEntity<List<ToDoDTO>>(list, HttpStatus.ACCEPTED);
     }
 
@@ -60,13 +62,17 @@ public class ToDoController {
 
     @GetMapping("/find-group")
     public ResponseEntity<List<ToDoDTO>> findByGroup(Long groupId) {
-        var list = mapper.mapToToDoEntiyList(toDoService.findToDoByGroup(groupId));
+        var list = mapper.mapToToDoDTOList(toDoService.findToDoByGroup(groupId));
+        if(list.isEmpty())
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         return new ResponseEntity<>(list, HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/find-priority")
     public ResponseEntity<List<ToDoDTO>> findByPriority(int priority) {
-        var list = mapper.mapToToDoEntiyList(toDoService.findToDoByPriority(priority));
+        var list = mapper.mapToToDoDTOList(toDoService.findToDoByPriority(priority));
+        if(list.isEmpty())
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         return new ResponseEntity<>(list, HttpStatus.ACCEPTED);
     }
 
@@ -78,9 +84,17 @@ public class ToDoController {
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
-        var list = mapper.mapToToDoEntiyList(toDoService.findToDoByDueDate(date));
+        var list = mapper.mapToToDoDTOList(toDoService.findToDoByDueDate(date));
+        if(list.isEmpty())
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         return new ResponseEntity<>(list, HttpStatus.ACCEPTED);
     }
 
-
+    @GetMapping("/find-all")
+    public ResponseEntity<List<ToDoDTO>> findAll(int pageNumber, int pageCount, String orderedColumnName){
+        var list = mapper.mapToToDoDTOList(toDoService.findAll(pageNumber, pageCount, orderedColumnName));
+        if(list.isEmpty())
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(list, HttpStatus.ACCEPTED);
+    }
 }

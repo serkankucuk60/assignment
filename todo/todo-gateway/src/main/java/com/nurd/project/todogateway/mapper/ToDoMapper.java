@@ -20,7 +20,7 @@ public abstract class ToDoMapper {
     @Mapping(target = "dueDate", expression = "java(getDueDateString(source))")
     public abstract ToDoDTO mapToToDoDTO(ToDoEntity source);
 
-    public abstract List<ToDoDTO> mapToToDoEntiyList(List<ToDoEntity> source);
+    public abstract List<ToDoDTO> mapToToDoDTOList(List<ToDoEntity> source);
 
     public Date getDueDate(ToDoDTO source) {
         if (source.getDueDate() == null)

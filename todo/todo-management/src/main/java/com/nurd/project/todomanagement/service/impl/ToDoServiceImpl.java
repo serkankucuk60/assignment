@@ -6,6 +6,8 @@ import com.nurd.project.todomanagement.utils.ToDoStatusEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -68,5 +70,10 @@ public class ToDoServiceImpl implements ToDoService {
     @Override
     public List<ToDoEntity> findToDoByDueDate(Date dueDate) {
         return repository.findByDueDate(dueDate);
+    }
+
+    @Override
+    public List<ToDoEntity> findAll(int pageNumber, int pageSize, String orderedColumnName) {
+        return repository.findAll(PageRequest.of(pageNumber, pageSize, Sort.by(orderedColumnName))).stream().toList();
     }
 }

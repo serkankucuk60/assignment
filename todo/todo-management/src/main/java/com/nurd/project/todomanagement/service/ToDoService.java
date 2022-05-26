@@ -23,4 +23,6 @@ public interface ToDoService {
     List<ToDoEntity> findToDoByPriority(int priority);
 
     List<ToDoEntity> findToDoByDueDate(Date dueDate);
+
+    List<ToDoEntity> findAll(int pageNumber, int pageSize, String orderedColumnName);
 }
