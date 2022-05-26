@@ -52,6 +52,11 @@ public class ToDoController {
         toDoService.markAsDone(id);
         return new ResponseEntity<>("OK", HttpStatus.ACCEPTED);
     }
+    @PostMapping("/mark-open")
+    public ResponseEntity<String> markAsOpen(String id) {
+        toDoService.markAsOpen(id);
+        return new ResponseEntity<>("OK", HttpStatus.ACCEPTED);
+    }
 
     @GetMapping("/find-group")
     public ResponseEntity<List<ToDoDTO>> findByGroup(Long groupId) {

@@ -16,6 +16,8 @@ public interface ToDoService {
 
     void markAsDone(String id);
 
+    void markAsOpen(String id);
+
     List<ToDoEntity> findToDoByGroup(Long groupId);
 
     List<ToDoEntity> findToDoByPriority(int priority);

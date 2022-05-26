@@ -46,6 +46,14 @@ public class ToDoServiceImpl implements ToDoService {
             repository.save(entity);
         }
     }
+    @Override
+    public void markAsOpen(String id) {
+        var entity = repository.findById(id).get();
+        if(entity != null){
+            entity.setStatus(ToDoStatusEnum.OPEN.toString());
+            repository.save(entity);
+        }
+    }
 
     @Override
     public List<ToDoEntity> findToDoByGroup(Long groupId) {
