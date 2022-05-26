@@ -39,7 +39,7 @@ public class GroupController {
     }
 
     @GetMapping("/find-owner")
-    public ResponseEntity<List<GroupDTO>> findByGroup(Long ownerId) {
+    public ResponseEntity<List<GroupDTO>> findByGroup(String ownerId) {
         var list = mapper.mapToGroupDTOList(groupService.findGroupByOwner(ownerId));
         if(list.isEmpty())
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

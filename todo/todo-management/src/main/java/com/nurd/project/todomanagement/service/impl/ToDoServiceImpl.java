@@ -58,7 +58,7 @@ public class ToDoServiceImpl implements ToDoService {
     }
 
     @Override
-    public List<ToDoEntity> findToDoByGroup(Long groupId) {
+    public List<ToDoEntity> findToDoByGroup(String groupId) {
         return repository.findByGroupId(groupId);
     }
 

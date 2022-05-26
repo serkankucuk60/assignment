@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class GroupDTO {
     private String id;
-    private Long ownerId;
+    private String ownerId;
     private String name;
 }

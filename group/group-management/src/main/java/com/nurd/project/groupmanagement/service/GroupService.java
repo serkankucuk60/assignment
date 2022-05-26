@@ -12,7 +12,7 @@ public interface GroupService {
 
     void delete(String id);
 
-    List<GroupEntity> findGroupByOwner(Long ownerId);
+    List<GroupEntity> findGroupByOwner(String ownerId);
 
     List<GroupEntity> findAll(int pageNumber, int pageSize, String orderedColumnName);
 }

@@ -22,7 +22,7 @@ public class GroupEntity {
     private String id;
 
     @NotBlank
-    private Long ownerId;
+    private String ownerId;
 
     @NotBlank
     private String name;

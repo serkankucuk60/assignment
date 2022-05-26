@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 public interface ToDoRepository extends MongoRepository<ToDoEntity, String> {
-    List<ToDoEntity> findByGroupId(Long groupId);
+    List<ToDoEntity> findByGroupId(String groupId);
 
     List<ToDoEntity> findByPriority(int priority);
 

@@ -6,5 +6,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 
 public interface GroupRepository extends MongoRepository<GroupEntity, String> {
-    List<GroupEntity> findByOwnerId(Long ownerId);
+    List<GroupEntity> findByOwnerId(String ownerId);
 }

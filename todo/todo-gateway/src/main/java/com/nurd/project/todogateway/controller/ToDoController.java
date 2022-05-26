@@ -61,7 +61,7 @@ public class ToDoController {
     }
 
     @GetMapping("/find-group")
-    public ResponseEntity<List<ToDoDTO>> findByGroup(Long groupId) {
+    public ResponseEntity<List<ToDoDTO>> findByGroup(String groupId) {
         var list = mapper.mapToToDoDTOList(toDoService.findToDoByGroup(groupId));
         if(list.isEmpty())
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

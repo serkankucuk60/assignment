@@ -32,7 +32,7 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public List<GroupEntity> findGroupByOwner(Long ownerId) {
+    public List<GroupEntity> findGroupByOwner(String ownerId) {
         return repository.findByOwnerId(ownerId);
     }
 

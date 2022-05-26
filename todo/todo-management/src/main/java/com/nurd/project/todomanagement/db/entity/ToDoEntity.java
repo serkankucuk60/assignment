@@ -18,13 +18,13 @@ public class ToDoEntity {
     private String id;
 
     @NotBlank
-    private Long assigneeId;
+    private String assigneeId;
 
     @NotBlank
-    private Long reporterId;
+    private String reporterId;
 
     @NotBlank
-    private Long groupId;
+    private String groupId;
 
     @NotBlank
     private String status;
