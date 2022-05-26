@@ -4,6 +4,9 @@ import com.nurd.project.groupmanagement.db.entity.GroupEntity;
 import com.nurd.project.groupmanagement.db.repo.GroupRepository;
 import com.nurd.project.groupmanagement.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -33,4 +36,8 @@ public class GroupServiceImpl implements GroupService {
         return repository.findByOwnerId(ownerId);
     }
 
+    @Override
+    public List<GroupEntity> findAll(int pageNumber, int pageSize, String orderedColumnName){
+        return repository.findAll(PageRequest.of(pageNumber, pageSize, Sort.by(orderedColumnName))).stream().toList();
+    }
 }
