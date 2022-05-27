@@ -1,6 +1,6 @@
 package com.nurd.project.authmanagement.service;
 
-import com.nurd.project.authmanagement.models.User;
+import com.nurd.project.authmanagement.entity.User;
 import com.nurd.project.authmanagement.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

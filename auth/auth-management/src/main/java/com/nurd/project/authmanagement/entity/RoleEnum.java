@@ -1,4 +1,4 @@
-package com.nurd.project.authmanagement.models;
+package com.nurd.project.authmanagement.entity;
 
 public enum RoleEnum {
     ROLE_USER,

@@ -5,9 +5,9 @@ import com.nurd.project.authgateway.dto.request.SignupRequest;
 import com.nurd.project.authgateway.dto.response.JwtResponse;
 import com.nurd.project.authgateway.dto.response.MessageResponse;
 import com.nurd.project.authmanagement.jwt.JwtUtils;
-import com.nurd.project.authmanagement.models.Role;
-import com.nurd.project.authmanagement.models.RoleEnum;
-import com.nurd.project.authmanagement.models.User;
+import com.nurd.project.authmanagement.entity.Role;
+import com.nurd.project.authmanagement.entity.RoleEnum;
+import com.nurd.project.authmanagement.entity.User;
 import com.nurd.project.authmanagement.repo.RoleRepository;
 import com.nurd.project.authmanagement.repo.UserRepository;
 import com.nurd.project.authmanagement.service.UserDetailsImpl;
@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/auth")
 public class AuthController {
     @Autowired
     AuthenticationManager authenticationManager;

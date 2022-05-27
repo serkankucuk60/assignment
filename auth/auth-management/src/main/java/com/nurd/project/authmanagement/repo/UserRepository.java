@@ -1,6 +1,6 @@
 package com.nurd.project.authmanagement.repo;
 
-import com.nurd.project.authmanagement.models.User;
+import com.nurd.project.authmanagement.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

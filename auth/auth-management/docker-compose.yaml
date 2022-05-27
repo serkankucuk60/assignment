@@ -1,6 +1,9 @@
 # Use root/example as user/password credentials
 version: '3.1'
 
+volumes:
+  assignment:
+
 services:
 
   auth-postgres:
@@ -9,13 +12,20 @@ services:
     ports:
       - 5432:5432
     restart: always
-
     environment:
-      POSTGRES_PASSWORD: a1s2d3
+      - POSTGRES_PASSWORD=a1s2d3
+      - POSTGRES_DB=auth
+    volumes:
+      - assignment:/home
 
-  adminer:
-    image: adminer
+  pgadmin:
+    image: dpage/pgadmin4
     restart: always
     ports:
-      - 8088:8080
+      - 8088:80
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=skucuk@nurd.com
+      - PGADMIN_DEFAULT_PASSWORD=a1s2d3
+    volumes:
+      - assignment:/home/
 

@@ -1,7 +1,7 @@
 package com.nurd.project.authmanagement.service;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.nurd.project.authmanagement.models.User;
+import com.nurd.project.authmanagement.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
