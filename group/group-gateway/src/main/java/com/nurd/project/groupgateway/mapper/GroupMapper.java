@@ -1,6 +1,6 @@
 package com.nurd.project.groupgateway.mapper;
 
-import com.nurd.project.groupgateway.dto.GroupDTO;
+import com.nurd.project.common.dto.GroupDTO;
 import com.nurd.project.groupmanagement.db.entity.GroupEntity;
 import org.mapstruct.Mapper;
 

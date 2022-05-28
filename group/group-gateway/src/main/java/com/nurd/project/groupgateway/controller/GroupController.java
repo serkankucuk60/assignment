@@ -1,6 +1,6 @@
 package com.nurd.project.groupgateway.controller;
 
-import com.nurd.project.groupgateway.dto.GroupDTO;
+import com.nurd.project.common.dto.GroupDTO;
 import com.nurd.project.groupgateway.mapper.GroupMapper;
 import com.nurd.project.groupmanagement.service.GroupService;
 import org.mapstruct.factory.Mappers;

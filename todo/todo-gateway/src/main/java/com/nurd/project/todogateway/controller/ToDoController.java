@@ -1,6 +1,6 @@
 package com.nurd.project.todogateway.controller;
 
-import com.nurd.project.todogateway.dto.ToDoDTO;
+import com.nurd.project.common.dto.ToDoDTO;
 import com.nurd.project.todogateway.mapper.ToDoMapper;
 import com.nurd.project.todomanagement.service.ToDoService;
 import org.mapstruct.factory.Mappers;
