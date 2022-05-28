@@ -1,4 +1,4 @@
-package com.nurd.project.authmanagement.service;
+package com.nurd.project.authmanagement.service.impl;
 
 import com.nurd.project.authmanagement.entity.User;
 import com.nurd.project.authmanagement.repo.UserRepository;

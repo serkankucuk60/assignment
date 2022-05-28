@@ -1,11 +1,11 @@
-package com.nurd.project.authgateway.dto.request;
+package com.nurd.project.authmanagement.dto.request;
 
 import lombok.Data;
 
 import java.util.Set;
 
 @Data
-public class SignupRequest {
+public class SignupRequestDTO {
     private String username;
     private String email;
     private String password;

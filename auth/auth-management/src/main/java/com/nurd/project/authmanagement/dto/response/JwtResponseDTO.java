@@ -1,4 +1,4 @@
-package com.nurd.project.authgateway.dto.response;
+package com.nurd.project.authmanagement.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
-public class JwtResponse {
+public class JwtResponseDTO {
     private String token;
     private Long id;
     private String username;

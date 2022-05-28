@@ -2,7 +2,7 @@ package com.nurd.project.authmanagement.jwt;
 
 import java.util.Date;
 
-import com.nurd.project.authmanagement.service.UserDetailsImpl;
+import com.nurd.project.authmanagement.service.impl.UserDetailsImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
