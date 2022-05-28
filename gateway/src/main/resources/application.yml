@@ -1,0 +1,12 @@
+server:
+  port: 8888
+
+client:
+  todo-api:
+    name: todo
+    server-url: http://localhost:8080/todo
+
+  group-api:
+    name: group
+    server-url: http://localhost:8081/group
+
