@@ -3,6 +3,8 @@ package com.nurd.project.gateway.controller;
 import com.nurd.project.common.dto.ToDoDTO;
 import com.nurd.project.gateway.client.ToDoClient;
 import com.nurd.project.gateway.interceptor.ClientHandlerInterceptor;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +29,7 @@ public class ToDoController {
     }
 
     @GetMapping("/opens")
+    @Operation(security = { @SecurityRequirement(name = "bearer-key") })
     public ResponseEntity<List<ToDoDTO>> getOpenToDos(){
         return client.getOpenToDos();
     }

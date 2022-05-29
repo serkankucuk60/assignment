@@ -7,6 +7,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,10 @@ public class ClientHandlerInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        if(handler instanceof HandlerMethod == false ||
+                ((HandlerMethod) handler).getBeanType().getPackage().getName().endsWith("controller") == false)
+            return true;
+
         var header = request.getHeader("authorization");
         if (header == null || header.isEmpty() || header.startsWith("Bearer") == false)
             return false;
