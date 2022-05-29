@@ -1,2 +1,0 @@
-client:
-  group-service: http://localhost:8081/group
