@@ -15,4 +15,6 @@ public interface GroupService {
     List<GroupEntity> findGroupByOwner(String ownerId);
 
     List<GroupEntity> findAll(int pageNumber, int pageSize, String orderedColumnName);
+
+    GroupEntity findById(String id);
 }

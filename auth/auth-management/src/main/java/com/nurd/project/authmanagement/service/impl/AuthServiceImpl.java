@@ -111,4 +111,9 @@ public class AuthServiceImpl implements AuthService {
         userRepository.save(user);
         return ResponseEntity.ok(new MessageResponseDTO("User registered successfully!"));
     }
+
+    @Override
+    public User getById(Long id) {
+        return userRepository.findById(id).get();
+    }
 }

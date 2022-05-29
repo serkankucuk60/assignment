@@ -10,3 +10,6 @@ client:
     name: group
     server-url: http://localhost:8081/group
 
+  user-api:
+    name: user
+    server-url: http://localhost:8000/auth

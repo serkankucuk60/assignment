@@ -40,4 +40,14 @@ public class GroupServiceImpl implements GroupService {
     public List<GroupEntity> findAll(int pageNumber, int pageSize, String orderedColumnName){
         return repository.findAll(PageRequest.of(pageNumber, pageSize, Sort.by(orderedColumnName))).stream().toList();
     }
+
+    @Override
+    public GroupEntity findById(String id) {
+        var opt = repository.findById(id);
+
+        if(opt.isEmpty())
+            return  null;
+
+        return opt.get();
+    }
 }

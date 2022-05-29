@@ -1,13 +1,13 @@
 package com.nurd.project.gateway.client;
 
-import com.nurd.project.common.dto.GroupDTO;
+import com.nurd.project.common.dto.UserDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(value = "${client.group-api.name}", url = "${client.group-api.server-url}")
-public interface GroupClient {
+@FeignClient(value = "${client.user-api.name}", url = "${client.user-api.server-url}")
+public interface UserClient {
     @GetMapping
-    ResponseEntity<GroupDTO> getById(@RequestParam(value = "id") String id);
+    ResponseEntity<UserDTO> getById(@RequestParam Long id);
 }

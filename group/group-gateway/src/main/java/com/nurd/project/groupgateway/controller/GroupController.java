@@ -53,4 +53,14 @@ public class GroupController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         return new ResponseEntity<>(list, HttpStatus.ACCEPTED);
     }
+
+    @GetMapping
+    public ResponseEntity<GroupDTO> getById(@RequestParam(value = "id") String id){
+        var group = groupService.findById(id);
+
+        if(group == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        return new ResponseEntity<>(mapper.mapToGroupDTO(group), HttpStatus.ACCEPTED);
+    }
 }
