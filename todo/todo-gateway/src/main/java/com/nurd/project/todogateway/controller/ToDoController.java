@@ -44,40 +44,41 @@ public class ToDoController {
     @GetMapping("/opens")
     public ResponseEntity<List<ToDoDTO>> getOpenToDos() {
         var list = mapper.mapToToDoDTOList(toDoService.getOpenToDos());
-        if(list.isEmpty())
+        if (list.isEmpty())
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         return new ResponseEntity<List<ToDoDTO>>(list, HttpStatus.ACCEPTED);
     }
 
     @PostMapping("/mark-done")
-    public ResponseEntity<String> markAsDone(String id) {
+    public ResponseEntity<String> markAsDone(@RequestParam String id) {
         toDoService.markAsDone(id);
         return new ResponseEntity<>("OK", HttpStatus.ACCEPTED);
     }
+
     @PostMapping("/mark-open")
-    public ResponseEntity<String> markAsOpen(String id) {
+    public ResponseEntity<String> markAsOpen(@RequestParam String id) {
         toDoService.markAsOpen(id);
         return new ResponseEntity<>("OK", HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/find-group")
-    public ResponseEntity<List<ToDoDTO>> findByGroup(String groupId) {
+    public ResponseEntity<List<ToDoDTO>> findByGroup(@RequestParam String groupId) {
         var list = mapper.mapToToDoDTOList(toDoService.findToDoByGroup(groupId));
-        if(list.isEmpty())
+        if (list.isEmpty())
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         return new ResponseEntity<>(list, HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/find-priority")
-    public ResponseEntity<List<ToDoDTO>> findByPriority(int priority) {
+    public ResponseEntity<List<ToDoDTO>> findByPriority(@RequestParam int priority) {
         var list = mapper.mapToToDoDTOList(toDoService.findToDoByPriority(priority));
-        if(list.isEmpty())
+        if (list.isEmpty())
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         return new ResponseEntity<>(list, HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/find-duedate")
-    public ResponseEntity<List<ToDoDTO>> findByDueDate(String dueDate) {
+    public ResponseEntity<List<ToDoDTO>> findByDueDate(@RequestParam String dueDate) {
         Date date = null;
         try {
             date = new SimpleDateFormat("dd/MM/yyyy").parse(dueDate);
@@ -85,15 +86,15 @@ public class ToDoController {
             throw new RuntimeException(e);
         }
         var list = mapper.mapToToDoDTOList(toDoService.findToDoByDueDate(date));
-        if(list.isEmpty())
+        if (list.isEmpty())
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         return new ResponseEntity<>(list, HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/find-all")
-    public ResponseEntity<List<ToDoDTO>> findAll(int pageNumber, int pageCount, String orderedColumnName){
+    public ResponseEntity<List<ToDoDTO>> findAll(@RequestParam int pageNumber, @RequestParam int pageCount, @RequestParam String orderedColumnName) {
         var list = mapper.mapToToDoDTOList(toDoService.findAll(pageNumber, pageCount, orderedColumnName));
-        if(list.isEmpty())
+        if (list.isEmpty())
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         return new ResponseEntity<>(list, HttpStatus.ACCEPTED);
     }

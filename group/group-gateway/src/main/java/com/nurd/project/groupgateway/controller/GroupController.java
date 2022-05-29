@@ -33,32 +33,32 @@ public class GroupController {
     }
 
     @PostMapping("/delete")
-    public ResponseEntity<String> delete(@RequestBody String id) {
+    public ResponseEntity<String> delete(@RequestParam String id) {
         groupService.delete(id);
         return new ResponseEntity<>("OK", HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/find-owner")
-    public ResponseEntity<List<GroupDTO>> findByGroup(String ownerId) {
+    public ResponseEntity<List<GroupDTO>> findByGroup(@RequestParam String ownerId) {
         var list = mapper.mapToGroupDTOList(groupService.findGroupByOwner(ownerId));
-        if(list.isEmpty())
+        if (list.isEmpty())
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         return new ResponseEntity<>(list, HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/find-all")
-    public ResponseEntity<List<GroupDTO>> findAll(int pageNumber, int pageCount, String orderedColumnName){
+    public ResponseEntity<List<GroupDTO>> findAll(@RequestParam int pageNumber, @RequestParam int pageCount, @RequestParam String orderedColumnName) {
         var list = mapper.mapToGroupDTOList(groupService.findAll(pageNumber, pageCount, orderedColumnName));
-        if(list.isEmpty())
+        if (list.isEmpty())
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         return new ResponseEntity<>(list, HttpStatus.ACCEPTED);
     }
 
     @GetMapping
-    public ResponseEntity<GroupDTO> getById(@RequestParam(value = "id") String id){
+    public ResponseEntity<GroupDTO> getById(@RequestParam(value = "id") String id) {
         var group = groupService.findById(id);
 
-        if(group == null)
+        if (group == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
         return new ResponseEntity<>(mapper.mapToGroupDTO(group), HttpStatus.ACCEPTED);

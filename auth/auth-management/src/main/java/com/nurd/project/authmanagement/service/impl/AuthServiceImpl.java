@@ -29,15 +29,10 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class AuthServiceImpl implements AuthService {
 
-    //@Autowired
     JwtUtils jwtUtils;
-    //@Autowired
     AuthenticationManager authenticationManager;
-    //@Autowired
     UserRepository userRepository;
-    //@Autowired
-    RoleRepository roleRepository;
-    //@Autowired
+     RoleRepository roleRepository;
     PasswordEncoder encoder;
 
     @Override
@@ -116,4 +111,11 @@ public class AuthServiceImpl implements AuthService {
     public User getById(Long id) {
         return userRepository.findById(id).get();
     }
+
+    @Override
+    public List<User> getAll() {
+        return userRepository.findAll();
+    }
+
+
 }
