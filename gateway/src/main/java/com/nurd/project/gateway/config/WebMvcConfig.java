@@ -15,7 +15,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .components(new Components()
-                        .addSecuritySchemes("Bearer token taken by auth-gateway",
+                        .addSecuritySchemes("bearer-key",
                                 new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT")));
     }
     @Override
