@@ -13,15 +13,18 @@
 - auth-gateway bir SpringBoot uygulamasıdır ve localhost:8000 adresinde ayağa kalkar.
 - auth-management ise authentication, authorization ve user management ile sorumlu. 
 	Kullanıcıların, rollerin CRUD işlerini de yapar.
+	
 - auth-management PostgreSql kullanır ve kurulumu için docker-compose dosyası mevcuttur.
 - PgAdmin de docker-compose ile ayağa kaldırılıyor. "localhost:8088/login" adresinden giriş yapılabilir.
 - PgAdmin kullanıcı giriş bilgileri: 
 		* skucuk@nurd.com
 		* a1s2d3
+
 - auth-gateway endpointleri ile sign-up ve sign-in yapılır, requestler için Postman kullanılır.
 - Sign in sonrası JWT Bearer token üretilir.
 - Test requestleri ile token kullanılarak requestler gönderilir ve hem authentication 
 	hem de authorization kontrolleri yapılır.
+
 - Tüm requestler Postman'den export alındı, "Auth.postman_collection.json" isimli dosya.
 
 
