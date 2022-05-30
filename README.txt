@@ -1,5 +1,23 @@
 ******** Assignment Readme *********
 
+- 4 seperate projects in single repo
+	- auth (User Management)
+	- todo (ToDo Management)
+	- group (Group Management)
+	- gateway (API to use todo and group)
+	
+- All projects have docker-compose.yaml
+
+** auth **
+
+- auth-gateway module is a Spring Boot application and runs on localhost:8080
+- auth-management module is responsible for authentication, authorization and user management. CRUD operations for users and roles.
+- PostgreSql stores user information, auth-management connects. (Postgres may run with docker-compose)
+- Also PgAdmin can be used, container info in docker-compose. Its URL "localhost:8888/login"
+- PgAdmin sign-in info:
+	* skucuk@nurd.com
+		* a1s2d3
+
 - Tek repo içerisinde 4 farklı proje bulunuyor.
 	- auth (User Management)
 	- todo (ToDo Management)
@@ -7,53 +25,37 @@
 	- gateway (API to use todo and group)
 
 - Her projede docker-compose.yaml dosyası mevcuttur.
-
-** auth **
-
-- auth-gateway bir SpringBoot uygulamasıdır ve localhost:8000 adresinde ayağa kalkar.
-- auth-management ise authentication, authorization ve user management ile sorumlu. 
-	Kullanıcıların, rollerin CRUD işlerini de yapar.
-	
-- auth-management PostgreSql kullanır ve kurulumu için docker-compose dosyası mevcuttur.
-- PgAdmin de docker-compose ile ayağa kaldırılıyor. "localhost:8088/login" adresinden giriş yapılabilir.
-- PgAdmin kullanıcı giriş bilgileri: 
-		* skucuk@nurd.com
-		* a1s2d3
-
-- auth-gateway endpointleri ile sign-up ve sign-in yapılır, requestler için Postman kullanılır.
-- Sign in sonrası JWT Bearer token üretilir.
-- Test requestleri ile token kullanılarak requestler gönderilir ve hem authentication 
-	hem de authorization kontrolleri yapılır.
-
-- Tüm requestler Postman'den export alındı, "Auth.postman_collection.json" isimli dosya.
+- Sign-up and sign-ip request mapping in auth-gateway. Request samples are at repo (filename:"Auth.postman_collection.json") as a Postman export.
+- JWT Bearer token will be created after successful sign-in.
+- Test requests in Postman collection may be used for Token validation.
 
 
-** todo **
+** todo**
 
-- todo-gateway bir SpringBoot uygulamasıdır ve localhost:8080 adresinde ayağa kalkar.
-- todo-management ise CRUD işlemlerini yapar.
-- todo-management MongoDb kullanır, kurulumu için docker-compose dosyası mevcuttur.
-- Kendi bilgisayarıma MongoDb Compass kurarak "mongodb://admin:admin@localhost:27017/" connection stringi ile bağlandım.
-- localhost:8080/swagger-ui.html adresinden Swagger kullanılarak endpointler test edilebilir.
-- Bu uygulamayı dışarıya kapalı olacak bir uygulama olarak düşündüğümden Authorization token istemiyor.
+- todo-gateway module is a Spring Boot application that runs on localhost:8080.
+- todo-management module does CRUD operations on todo database.
+- MongoDb is used at this module, it may be setup by using docker-compose.
+- Todo database connection string is "mongodb://admin:admin@localhost:27017/".
+- Swagger is ready at localhost:8080/swagger-ui.html so there is no Postman collection.
+- In my opinion, todo-gateway is private, it will be inner application at cloud system. So, its endpoints do not wait authorization token.
 
 
 ** group **
 
-- group-gateway bir SpringBoot uygulamasıdır ve localhost:8081 adresinde ayağa kalkar.
-- group-management ise CRUD işlemlerini yapar.
-- group-management MongoDb kullanır, kurulumu için docker-compose dosyası mevcuttur.
-- Kendi bilgisayarıma MongoDb Compass kurarak "mongodb://admin:admin@localhost:27018/" connection stringi ile bağlandım.
-- localhost:8081/swagger-ui.html adresinden Swagger kullanılarak endpointler test edilebilir.
-- Bu uygulamayı dışarıya kapalı olacak bir uygulama olarak düşündüğümden Authorization token istemiyor.
+- group-gateway module is a Spring Boot application that runs on localhost:8081.
+- group-management does CRUD operations on group database.
+- MongoDb is used at this module, it may be setup by using docker-compose.
+- Todo database connection string is "mongodb://admin:admin@localhost:27018/".
+- Swagger is ready at localhost:8081/swagger-ui.html so there is no Postman collection.
+- In my opinion, todo-gateway is private, it will be inner application at cloud system. So, its endpoints do not wait authorization token.
 
 
 ** gateway **
 
-- gateway bir SpringBoot uygulamasıdır ve localhost:8888 adresinde ayağa kalkar.
-- Front-end tarafından kullanılarak olan endpointler bu uygulamada bulunur.
-- Request header'ında authorization Bearer token ister ve token geçerli mi diye auth-gateway üzerinden kontrol eder.
-- todo-gateway ve group-gateway endpointlerini kullanarak arayüzlerin ihtiyaç duyacağı işleri yapar.
-- localhost:8888/swagger-ui.html adresinden Swagger kullanılarak endpointler test edilebilir.
-- auth-gateway sign-in requesti ile temin edilen Bearer token burada Swagger arayüzünde bulunan Authorize butonu ile açılan 
-	yere mutlaka girilmeli. 	
+- gateway is a Sprin gBoot application that runs on localhost:8888.
+- It has endpoints that can be used by front-end.
+- JWT Bearer token is must, so firstly, you have to sign-in with Postman request and get token. 
+- In my opinion, this application may be public on cloud system. 
+- This application send requests to endpoints at todo-gateway and group-gateway.
+- Swagger is ready at localhost:8888/swagger-ui.html so there is no Postman collection.
+- Authorize button at Swagger UI is used to set Bearer token.
