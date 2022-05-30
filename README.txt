@@ -18,17 +18,6 @@
 	* skucuk@nurd.com
 		* a1s2d3
 
-- Tek repo içerisinde 4 farklı proje bulunuyor.
-	- auth (User Management)
-	- todo (ToDo Management)
-	- group (Group Management)
-	- gateway (API to use todo and group)
-
-- Her projede docker-compose.yaml dosyası mevcuttur.
-- Sign-up and sign-ip request mapping in auth-gateway. Request samples are at repo (filename:"Auth.postman_collection.json") as a Postman export.
-- JWT Bearer token will be created after successful sign-in.
-- Test requests in Postman collection may be used for Token validation.
-
 
 ** todo**
 
@@ -52,7 +41,7 @@
 
 ** gateway **
 
-- gateway is a Sprin gBoot application that runs on localhost:8888.
+- gateway is a Spring Boot application that runs on localhost:8888.
 - It has endpoints that can be used by front-end.
 - JWT Bearer token is must, so firstly, you have to sign-in with Postman request and get token. 
 - In my opinion, this application may be public on cloud system. 
