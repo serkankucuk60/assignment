@@ -16,7 +16,7 @@
 - Also PgAdmin can be used, container info in docker-compose. Its URL "localhost:8888/login"
 - PgAdmin sign-in info:
 	* skucuk@nurd.com
-		* a1s2d3
+	* a1s2d3
 
 
 ** todo**
